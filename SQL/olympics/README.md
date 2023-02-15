@@ -8,9 +8,7 @@ with {number of medals} medals".Replace NULLs with "No Team" string.**
 
 <img src="https://github.com/Dconesoko/Data_engineering/blob/dev/SQL/olympics/Capture.PNG?raw=true" width="70%">
 
-### Expected Solution
-
-<img src="https://github.com/Dconesoko/Data_engineering/blob/dev/SQL/olympics/Solution.PNG?raw=true" width="70%">
+### Solution
 
 ```sql
 WITH base AS ( -- Count the number of medals won by each team in each event
@@ -59,3 +57,5 @@ LEFT JOIN bronze_team AS D
 ON A.event = D.event;
 ```
 
+### Output data
+<img src="https://github.com/Dconesoko/Data_engineering/blob/dev/SQL/olympics/Solution.PNG?raw=true" width="70%">
