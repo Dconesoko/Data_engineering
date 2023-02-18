@@ -1,6 +1,6 @@
 services:
   warehouse:
-    image: postgres:13
+    image: postgres:latest
     container_name: warehouse
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -13,3 +13,13 @@ services:
     restart: always
     ports:
       - "5432:5432"
+  data_job:
+    image: pipeline_infra
+    container_name: pipeline_cont
+    build:
+      context: ./
+      dockerfile: dockerfile
+    volumes:
+      - ./:/code
+    env_file:
+      - ./.env

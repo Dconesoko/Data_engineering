@@ -1,0 +1,10 @@
+psycopg2
+requests
+pytest
+pytest-mock
+black
+flake8
+mypy
+types-requests
+isort
+yoyo-migrations==8.0.0
