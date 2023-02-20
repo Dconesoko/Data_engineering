@@ -5,7 +5,7 @@
 
 ## :file_folder: Organization :file_folder:
 - Each project is located in a self describing folder eg Sentiment_Analysis or Streaming_churn_server
-- Each project has a readme.md file that describes the project and provides references for the curious
+- Each project has a readme.md file that describes the project and provides references whenever neccessary
 - Datasets and any other assets used for the project would be made available to ensure that results are reproducable
 
 
