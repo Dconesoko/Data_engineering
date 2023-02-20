@@ -8,7 +8,7 @@ ENV PYTHONPATH=/code/src
 RUN apt-get update && apt-get install cron -y
 
 # install python requirements
-ADD ./containers/requirements.txt requirements.txt
+ADD ./container/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # copy repo
