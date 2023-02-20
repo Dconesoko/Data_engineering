@@ -1,0 +1,25 @@
+services:
+  warehouse:
+    image: postgres:latest
+    container_name: warehouse
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER}" ]
+      interval: 5s
+      retries: 5
+    restart: always
+    ports:
+      - "5432:5432"
+  data_job:
+    image: pipeline_infra
+    container_name: pipeline_cont
+    build:
+      context: ./
+      dockerfile: dockerfile
+    volumes:
+      - ./:/code
+    env_file:
+      - ./.env
