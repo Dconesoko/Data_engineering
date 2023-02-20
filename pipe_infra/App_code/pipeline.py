@@ -7,7 +7,7 @@ import psycopg2.extras as p
 import requests
 
 from utils.db import WarehouseConnection
-from utils.sdeconfig import get_warehouse_creds
+from utils.config import get_warehouse_creds
 
 
 def get_utc_from_unix_time(

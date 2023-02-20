@@ -1,6 +1,7 @@
 import os
+import sys
 
-from App_code.utils.db import DBConnection
+from utils.db import DBConnection
 
 
 def get_warehouse_creds() -> DBConnection:
