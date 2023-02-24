@@ -6,8 +6,8 @@ from typing import Any, Dict, List, Optional
 import psycopg2.extras as p
 import requests
 
-from utils.db import WarehouseConnection
-from utils.config import get_warehouse_creds
+from App_code.utils.db import WarehouseConnection
+from App_code.utils.config import get_warehouse_creds
 
 
 def get_utc_from_unix_time(
