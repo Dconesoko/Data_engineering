@@ -14,14 +14,14 @@ RUN pip install -r requirements.txt
 # copy repo
 COPY ./ /code/
 
-# Copy pull_bitcoin_exchange_info file to the cron.d directory
-COPY /scheduler/pull_bitcoin_exchange_info /etc/cron.d/pull_bitcoin_exchange_info
+# Copy pipeline_cron file to the cron.d directory
+COPY /scheduler/pipeline_cron /etc/cron.d/pipeline_cron
 
 # Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/pull_bitcoin_exchange_info
+RUN chmod 0644 /etc/cron.d/pipeline_cron
 
 # Apply cron job
-RUN crontab /etc/cron.d/pull_bitcoin_exchange_info
+RUN crontab /etc/cron.d/pipeline_cron
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log

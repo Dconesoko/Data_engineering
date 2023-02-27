@@ -1,2 +1,3 @@
 .env
 pipe_infra/secrets
+.wh_env
