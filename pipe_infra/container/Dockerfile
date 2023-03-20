@@ -27,4 +27,4 @@ RUN crontab /etc/cron.d/pipeline_cron
 RUN touch /var/log/cron.log
  
 # Run cron
-CMD cron && tail -f /var/log/cron.log
+CMD cron && tail -f /var/log/cron.log && python table_pipeline.py

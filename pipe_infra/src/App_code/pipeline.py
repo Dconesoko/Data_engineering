@@ -1,13 +1,14 @@
 import datetime
 import logging
 import sys
-from typing import Any, Dict, List, Optional
+sys.path.append("/home/nanabediako/Desktop/Data Engineering/pipe_infra/src")
 
+from typing import Any, Dict, List, Optional
 import psycopg2.extras as p
 import requests
-
 from App_code.utils.db import WarehouseConnection
 from App_code.utils.config import get_warehouse_creds
+
 
 
 def get_utc_from_unix_time(
