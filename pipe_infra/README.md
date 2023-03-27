@@ -1,3 +1,4 @@
+
 # CRYPTO MONITOR
 
 #### This project provides the details for implementing a near-realtime data pipeline for ingesting and reporting data from [Coinbase](https://docs.coincap.io/)
@@ -17,4 +18,6 @@
 - Git & GitHub
 - Pgadmin
 - Tableau
+
+
 
