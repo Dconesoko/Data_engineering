@@ -1,7 +1,6 @@
 import datetime
 import logging
 import sys
-sys.path.append("/home/nanabediako/Desktop/Data Engineering/pipe_infra/src")
 
 from typing import Any, Dict, List, Optional
 import psycopg2.extras as p
@@ -64,8 +63,12 @@ def run() -> None:
     data = get_exchange_data()
     for d in data:
         d['update_dt'] = get_utc_from_unix_time(d.get('updated'))
-    with WarehouseConnection(get_warehouse_creds()).managed_cursor() as curr:
+    
+    run_data=get_warehouse_creds()
+
+    with WarehouseConnection(run_data).managed_cursor() as curr:
         p.execute_batch(curr, _get_exchange_insert_query(), data)
+
 
 
 if __name__ == '__main__':

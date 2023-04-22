@@ -14,7 +14,7 @@ services:
     ports:
       - "5432:5432"
   data_job:
-    image: pipeline_infra
+    image: pipeline_make
     container_name: pipeline_cont
     build:
       context: ./
