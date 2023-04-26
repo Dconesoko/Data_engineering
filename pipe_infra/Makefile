@@ -1,8 +1,26 @@
-.PHONY: run
-
+.PHONY: run build up down clean
 
 run:
 	@python table_creation.py
 	@python table_creation.py
 	@python table_creation.py
+
+# Build the Docker image
+build:
+	docker-compose build
+
+# Start the containers
+up:
+	docker-compose up -d
+
+# Stop the containers
+down:
+	docker-compose down
+
+# Clean up Docker containers, networks, and images
+clean:
+	docker system prune -a --volumes --force
+
+# Rebuild and run the containers
+rebuild: down clean build up
 

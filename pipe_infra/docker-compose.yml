@@ -18,7 +18,7 @@ services:
 
   data_job:
     image: pipeline_make
-    container_name: pipeline_cont
+    container_name: ${CONTAINER_NAME}
     build:
       context: ./
       dockerfile: ./container/Dockerfile

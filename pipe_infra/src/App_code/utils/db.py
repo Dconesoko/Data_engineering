@@ -1,25 +1,26 @@
 from contextlib import contextmanager
-import psycopg2
-from psycopg2.extras import DictCursor
 from dataclasses import dataclass
-
+from typing import Optional
+import psycopg2
 
 
 @dataclass
 class DBConnection:
-    user: str
-    password: str
-    db: str
+    user: Optional[str]
+    password: Optional[str]
+    db: Optional[str]
     host: str
     port: int = 5432
 
     def conn_url(self) -> str:
         return (
-            f'postgresql://{self.user}:{self.password}@'
-            f'{self.host}:{self.port}/{self.db}'
+            f"postgresql://{self.user}:{self.password}@"
+            f"{self.host}:{self.port}/{self.db}"
         )
+
     def __post_init__(self):
         self.conn_url = self.conn_url()
+
 
 class WarehouseConnection:
     def __init__(self, db_conn: DBConnection):
