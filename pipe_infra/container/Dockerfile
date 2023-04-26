@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 COPY ./ /code/
 
 # Copy pipeline_cron file to the cron.d directory
-COPY /scheduler/pipeline_cron /etc/cron.d/pipeline_cron
+COPY scheduler/pipeline_cron /etc/cron.d/pipeline_cron
 
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/pipeline_cron
@@ -27,4 +27,4 @@ RUN crontab /etc/cron.d/pipeline_cron
 RUN touch /var/log/cron.log
  
 # Run cron
-CMD cron && tail -f /var/log/cron.log && python table_pipeline.py
+CMD (cron -f) & (tail -f /var/log/cron.log) & (make run && echo "Pipeline is running") & tail -f /dev/null

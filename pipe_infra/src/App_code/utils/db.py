@@ -1,24 +1,30 @@
 from contextlib import contextmanager
 from dataclasses import dataclass
-
+from typing import Optional
 import psycopg2
 
 
 @dataclass
 class DBConnection:
-    db: str
-    user: str
-    password: str
+    user: Optional[str]
+    password: Optional[str]
+    db: Optional[str]
     host: str
     port: int = 5432
+
+    def conn_url(self) -> str:
+        return (
+            f"postgresql://{self.user}:{self.password}@"
+            f"{self.host}:{self.port}/{self.db}"
+        )
+
+    def __post_init__(self):
+        self.conn_url = self.conn_url()
 
 
 class WarehouseConnection:
     def __init__(self, db_conn: DBConnection):
-        self.conn_url = (
-            f'postgresql://{db_conn.user}:{db_conn.password}@'
-            f'{db_conn.host}:{db_conn.port}/{db_conn.db}'
-        )
+        self.conn_url = db_conn.conn_url
 
     @contextmanager
     def managed_cursor(self, cursor_factory=None):
