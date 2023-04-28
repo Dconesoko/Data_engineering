@@ -24,3 +24,19 @@ clean:
 # Rebuild and run the containers
 rebuild: down clean build up
 
+################################################################################
+# Test the application
+
+format:
+	docker exec -it ${CONTAINER_NAME} python -m black -S .
+
+isort:
+	docker exec -it ${CONTAINER_NAME} python -m isort .
+
+lint:
+	docker exec -it ${CONTAINER_NAME} python -m flake8 .
+
+type:
+	docker exec -it ${CONTAINER_NAME} python -m mypy --ignore-missing-imports .
+
+start_integration: isort format type lint
